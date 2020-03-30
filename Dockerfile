@@ -2,8 +2,8 @@ FROM node:latest
 
 WORKDIR /srv/app/
 
-# COPY ./package.json ./package.json 
+RUN git clone https://github.com/TGuillouet/DevopsTp1.git .
 
-RUN git clone 
+RUN yarn
 
-CMD yarn start
+CMD ["yarn", "start"]
