@@ -1,15 +1,17 @@
 FROM node:13.12.0-alpine3.10
 
+ENV PORT 8090
+
 WORKDIR /srv/app/
 
-RUN apk update && apk add git && apk add curl
+RUN apk update && apk add git
 
-RUN curl -o- -L https://yarnpkg.com/install.sh | sh
-
-RUN git clone https://github.com/TGuillouet/DevopsTp1.git .
+COPY package.json .
 
 RUN yarn
 
-EXPOSE 8080
+COPY . .
+
+EXPOSE ${PORT}
 
 CMD ["yarn", "start"]
